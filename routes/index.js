@@ -1,5 +1,6 @@
 // Carga los modulos necesarios para la aplicación
 var express = require('express');
+var quizController = require('../controllers/quiz_controller');
 
 // Un objeto "router" es una instancia aislada de middleware y rutas.
 // Puede considerarse como una “mini-aplicación,” capacitada únicamente
@@ -52,25 +53,20 @@ var express = require('express');
 // express.Router().
 var router = express.Router();
 
-// Patrón en la ruta de la petición
-var patronEnrutado = '/';
-
-// Nombre de la vista
-var nombreVista = 'index';
-
-// Parámetros de la vista
-var paramVista = {
-  title: 'Quiz'
-};
-
-// Listener MW
-function renderizarVista(req, res) {
-  // Renderiza la vista 'index' usando objIds
-  res.render(nombreVista, paramVista);
+// Listener MW - Home Page
+function renderizarVistaHome(req, res) {
+  // Renderiza la vista 'index'
+  res.render('index', {title: 'Quiz'});
 }
 
-// MW de enrutado
-router.get(patronEnrutado, renderizarVista);
+// MW enrutado - GET - Home Page - http://localhost:3000
+router.get('/', renderizarVistaHome);
+
+// MW enrutado - GET - Pregunta - http://localhost:3000/quizes/question
+router.get('/quizes/question', quizController.question);
+
+// MW enrutado - GET - Respuesta - http://localhost:3000/quizes/answer
+router.get('/quizes/answer', quizController.answer);
 
 // Exporta el enrutador
 module.exports = router;

@@ -71,9 +71,7 @@ app.use(logger('dev'));
 // Monta MWs - Por omisión de 'path' para cualquier ruta
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 // Monta MWs - static - Por omisión de 'path' para cualquier ruta
