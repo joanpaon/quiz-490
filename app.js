@@ -43,6 +43,9 @@ var cookieParser = require('cookie-parser');
 // Node.js body parsing middleware.
 var bodyParser = require('body-parser');
 
+// 
+var partials = require("express-partials");
+
 // Importa los enrutadores como si fueran módulos
 // En la referencia a estos módulos
 //  > La extensión ".js" se puede omitir
@@ -62,6 +65,11 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Motor para las vistas - Embedded Javascript
 app.set('view engine', 'ejs');
+
+// El módulo "express-partials" importa una factoria
+// que debe invocarse con () para generar el MW a
+// instalar
+app.use(partials());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
