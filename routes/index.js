@@ -59,6 +59,12 @@ function renderizarVistaHome(req, res) {
   res.render('index', {title: 'Quiz'});
 }
 
+// Listener MW - Créditos
+function renderizarVistaCreditos(req, res) {
+  // Renderiza la vista 'author'
+  res.render('creditos/author', {title: 'Quiz', author: "José A. Pacheco Ondoño"});
+}
+
 // MW enrutado - GET - Home Page - http://localhost:3000
 router.get('/', renderizarVistaHome);
 
@@ -67,6 +73,9 @@ router.get('/quizes/question', quizController.question);
 
 // MW enrutado - GET - Respuesta - http://localhost:3000/quizes/answer
 router.get('/quizes/answer', quizController.answer);
+
+// MW enrutado - GET - Respuesta - http://localhost:3000/quizes/answer
+router.get('/author', renderizarVistaCreditos);
 
 // Exporta el enrutador
 module.exports = router;
