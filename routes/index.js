@@ -56,13 +56,18 @@ var router = express.Router();
 // Listener MW - Home Page
 function renderizarVistaHome(req, res) {
   // Renderiza la vista 'index'
-  res.render('index', {title: 'Quiz'});
+  res.render('index', {
+    title: 'Quiz'
+  });
 }
 
 // Listener MW - Créditos
 function renderizarVistaCreditos(req, res) {
   // Renderiza la vista 'author'
-  res.render('creditos/author', {title: 'Quiz', author: "José A. Pacheco Ondoño"});
+  res.render('creditos/author', {
+    title: 'Quiz',
+    author: "José A. Pacheco Ondoño"
+  });
 }
 
 // MW enrutado - GET - Home Page - http://localhost:3000
