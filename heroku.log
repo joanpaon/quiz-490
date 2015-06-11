@@ -1,0 +1,102 @@
+2015-06-11T17:09:39.892530+00:00 app[web.1]:     at Object.<anonymous> (/app/routes/index.js:3:22)
+2015-06-11T17:09:40.769108+00:00 heroku[web.1]: Process exited with status 1
+2015-06-11T17:09:40.778112+00:00 heroku[web.1]: State changed from starting to crashed
+2015-06-11T17:10:08.539813+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=3b22463a-efa0-4283-a7b1-3325db02bb53 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:10:12.223677+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=0f0d3197-07f9-466e-b932-89861b2c6857 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:10:14.957645+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=a4fa5414-d7a1-420b-9683-8699482567df fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:10:18.885438+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=c675b23a-74cb-4d16-b145-20c38b518097 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:10:45.844980+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=df9952ca-2dcd-4dcc-80e6-0aab83129210 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:10:49.524141+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=2cc9baa4-3aa6-4d7f-8829-d7b4bd2f6754 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:10:52.519170+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=6939e8a0-df8b-484c-88b7-dad990a3414b fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:10:56.280023+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=3d3afec8-c822-41a6-a367-28339aab3bbf fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:11:57.235524+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=1afbd7c6-b990-4291-8f39-3f6be648d7e6 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:11:59.082267+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=97693921-39d9-4a3b-943c-6a01e6ef8cc0 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:12:09.018998+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=64d3e4ca-f539-4f3b-9e8e-0bb31241fcd9 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:12:12.519783+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=0441e10b-21dd-451b-9d59-74e596cf865b fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:12:15.960614+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=daaa6a14-c673-4e46-bc7c-ded7d4a38474 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:12:19.724948+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=705065b5-020a-4b0f-90ed-1d6acef57452 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:12:25.940611+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=97f6acc6-96ff-4db2-b75d-d3f6cbb18103 fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:12:27.299645+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=8cd7c559-b821-417d-a828-c697259010d3 fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:12:27.401814+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=d1e4a7d4-7e19-453c-b629-429d5b68548f fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:14:29.312428+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=fd9751f5-7990-4359-bcba-363fcb15434a fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:14:31.754087+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=be647ef9-dfd7-4b94-b2c1-79b12b09c6a5 fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:14:34.509846+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=6eae5dc6-0697-4ade-9b82-b62f2127c4ae fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:14:35.755423+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=36c9a38a-1012-4ec1-936c-79b741e6661d fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:18:38.479984+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=ccf2638e-1b53-400a-b6cb-90580fbcbbe8 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:18:42.259768+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=26862765-3993-4de1-997c-5f8edef452f6 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:19:19.661161+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=66fcce82-4686-4efc-a46d-395d10cb4136 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:19:21.527088+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=66c6cdd7-dfca-4ba5-ac6e-7b68dae78069 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:19:58.326469+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=b29c4b21-9825-46f9-853b-9fccb9f796aa fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:20:01.770314+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=e2999311-e3ca-46aa-9e89-b535da7c2924 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:24:21.076851+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=6f811480-6f1a-4250-9001-8db6f07e4165 fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:24:24.555233+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=5b0426ac-7670-4587-bf46-a33e7df1c71a fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:24:25.836964+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=86f63bda-7123-4767-aac8-4f956646aa8a fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:24:27.969577+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=7eccb361-8667-4489-b240-a344f3c02e7a fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:24:29.122609+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=fcaa4601-d89a-4a93-b82a-1d0a6bc830b0 fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:24:30.189062+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=08f4fe3d-d1ee-4a56-9468-fd0b66b2388a fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:24:33.094271+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=6f73e74a-c8fc-4ec0-bfb5-3098685b5f81 fwd="188.77.53.141" dyno= connect= service= status=503 bytes=
+2015-06-11T17:28:15.902454+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=23ef226b-e3cc-45e2-bc71-59e8bf844f13 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:28:17.749544+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=65fdff69-b542-4fbb-97e5-de270f419cc8 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:31:54.685039+00:00 heroku[web.1]: State changed from crashed to starting
+2015-06-11T17:32:04.963060+00:00 heroku[web.1]: Starting process with command `node ./bin/www`
+2015-06-11T17:32:06.955334+00:00 app[web.1]: Recommending WEB_CONCURRENCY=1
+2015-06-11T17:32:06.955306+00:00 app[web.1]: Detected 512 MB available memory, 512 MB limit per process (WEB_MEMORY)
+2015-06-11T17:32:07.652459+00:00 app[web.1]: /app/node_modules/sequelize/lib/sequelize.js:182
+2015-06-11T17:32:07.652467+00:00 app[web.1]:     throw new Error('The dialect ' + this.getDialect() + ' is not supported. (
+2015-06-11T17:32:07.652474+00:00 app[web.1]:     at new Sequelize (/app/node_modules/sequelize/lib/sequelize.js:182:11)
+2015-06-11T17:32:07.652470+00:00 app[web.1]:           ^
+2015-06-11T17:32:07.652477+00:00 app[web.1]:     at Module._compile (module.js:460:26)
+2015-06-11T17:32:07.652472+00:00 app[web.1]: Error: The dialect postgres is not supported. (Error: Cannot find module 'pg-hstore')
+2015-06-11T17:32:07.652475+00:00 app[web.1]:     at Object.<anonymous> (/app/models/models.js:59:17)
+2015-06-11T17:32:07.652479+00:00 app[web.1]:     at Object.Module._extensions..js (module.js:478:10)
+2015-06-11T17:32:07.652483+00:00 app[web.1]:     at Function.Module._load (module.js:310:12)
+2015-06-11T17:32:07.652481+00:00 app[web.1]:     at Module.load (module.js:355:32)
+2015-06-11T17:32:07.652484+00:00 app[web.1]:     at Module.require (module.js:365:17)
+2015-06-11T17:32:07.652486+00:00 app[web.1]:     at require (module.js:384:17)
+2015-06-11T17:32:07.652489+00:00 app[web.1]:     at Module._compile (module.js:460:26)
+2015-06-11T17:32:07.652488+00:00 app[web.1]:     at Object.<anonymous> (/app/controllers/quiz_controller.js:2:14)
+2015-06-11T17:32:07.652491+00:00 app[web.1]:     at Object.Module._extensions..js (module.js:478:10)
+2015-06-11T17:32:07.652492+00:00 app[web.1]:     at Module.load (module.js:355:32)
+2015-06-11T17:32:07.652494+00:00 app[web.1]:     at Function.Module._load (module.js:310:12)
+2015-06-11T17:32:07.652496+00:00 app[web.1]:     at Module.require (module.js:365:17)
+2015-06-11T17:32:07.652497+00:00 app[web.1]:     at require (module.js:384:17)
+2015-06-11T17:32:07.652499+00:00 app[web.1]:     at Object.<anonymous> (/app/routes/index.js:3:22)
+2015-06-11T17:32:08.555748+00:00 heroku[web.1]: Process exited with status 1
+2015-06-11T17:32:08.571723+00:00 heroku[web.1]: State changed from starting to crashed
+2015-06-11T17:51:09.936394+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=f2dbc7fa-0b8b-49ed-8671-5961e5c132fc fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T17:51:11.582454+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=b79d3807-3509-4322-926b-34d85122fe47 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T18:01:05.392853+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=d02a8080-6dee-4469-9cae-8beb2c1bce68 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T18:01:09.112449+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=c46d173c-f563-46c8-894f-8bd0e82fdfc8 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T18:07:35.879363+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=f01eec28-0aa0-4bea-8ba6-7e82a24a1359 fwd="83.213.56.225" dyno= connect= service= status=503 bytes=
+2015-06-11T18:07:36.488164+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=c7d29ae3-d70f-488b-9bc9-ae117b07e27e fwd="83.213.56.225" dyno= connect= service= status=503 bytes=
+2015-06-11T18:07:45.271255+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=abe7fd66-b3ba-48f0-b053-de4b8c821642 fwd="83.213.56.225" dyno= connect= service= status=503 bytes=
+2015-06-11T18:07:45.358130+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=8db4a60a-6327-4022-b423-ce5b3836b658 fwd="83.213.56.225" dyno= connect= service= status=503 bytes=
+2015-06-11T18:18:38.755242+00:00 heroku[web.1]: State changed from crashed to starting
+2015-06-11T18:18:43.397396+00:00 heroku[web.1]: Starting process with command `node ./bin/www`
+2015-06-11T18:18:45.960202+00:00 app[web.1]: Detected 512 MB available memory, 512 MB limit per process (WEB_MEMORY)
+2015-06-11T18:18:45.960220+00:00 app[web.1]: Recommending WEB_CONCURRENCY=1
+2015-06-11T18:18:46.688776+00:00 app[web.1]: /app/node_modules/sequelize/lib/sequelize.js:182
+2015-06-11T18:18:46.688783+00:00 app[web.1]:           ^
+2015-06-11T18:18:46.688781+00:00 app[web.1]:     throw new Error('The dialect ' + this.getDialect() + ' is not supported. (
+2015-06-11T18:18:46.688785+00:00 app[web.1]: Error: The dialect postgres is not supported. (Error: Cannot find module 'pg-hstore')
+2015-06-11T18:18:46.688789+00:00 app[web.1]:     at Module._compile (module.js:460:26)
+2015-06-11T18:18:46.688786+00:00 app[web.1]:     at new Sequelize (/app/node_modules/sequelize/lib/sequelize.js:182:11)
+2015-06-11T18:18:46.688792+00:00 app[web.1]:     at Module.load (module.js:355:32)
+2015-06-11T18:18:46.688791+00:00 app[web.1]:     at Object.Module._extensions..js (module.js:478:10)
+2015-06-11T18:18:46.688794+00:00 app[web.1]:     at Function.Module._load (module.js:310:12)
+2015-06-11T18:18:46.688788+00:00 app[web.1]:     at Object.<anonymous> (/app/models/models.js:59:17)
+2015-06-11T18:18:46.688795+00:00 app[web.1]:     at Module.require (module.js:365:17)
+2015-06-11T18:18:46.688797+00:00 app[web.1]:     at require (module.js:384:17)
+2015-06-11T18:18:46.688798+00:00 app[web.1]:     at Object.<anonymous> (/app/controllers/quiz_controller.js:2:14)
+2015-06-11T18:18:46.688800+00:00 app[web.1]:     at Module._compile (module.js:460:26)
+2015-06-11T18:18:46.688802+00:00 app[web.1]:     at Module.load (module.js:355:32)
+2015-06-11T18:18:46.688801+00:00 app[web.1]:     at Object.Module._extensions..js (module.js:478:10)
+2015-06-11T18:18:46.688804+00:00 app[web.1]:     at Function.Module._load (module.js:310:12)
+2015-06-11T18:18:46.688806+00:00 app[web.1]:     at r
+equire (module.js:384:17)
+2015-06-11T18:18:46.688805+00:00 app[web.1]:     at Module.require (module.js:365:17)
+2015-06-11T18:18:46.688808+00:00 app[web.1]:     at Object.<anonymous> (/app/routes/index.js:3:22)
+2015-06-11T18:18:47.583794+00:00 heroku[web.1]: Process exited with status 1
+2015-06-11T18:18:47.593358+00:00 heroku[web.1]: State changed from starting to crashed
+2015-06-11T18:41:47.592125+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=quiz-490.herokuapp.com request_id=2eac6c5f-4366-4927-b9c1-554dc23ef7e3 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
+2015-06-11T18:41:49.450380+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=quiz-490.herokuapp.com request_id=4f67ddff-0d9e-4931-ba06-fb16b9c054b5 fwd="65.49.14.84" dyno= connect= service= status=503 bytes=
