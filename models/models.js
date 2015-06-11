@@ -21,10 +21,10 @@ var database = (url[6] || null);
 var username = (url[2] || null);
 var password = (url[3] || null);
 var protocol = (url[1] || null);
-var dialect  = (url[1] || null);
-var port     = (url[5] || null);
-var host     = (url[4] || null);
-var storage  = process.env.DATABASE_STORAGE;
+var dialect = (url[1] || null);
+var port = (url[5] || null);
+var host = (url[4] || null);
+var storage = process.env.DATABASE_STORAGE;
 
 // Objeto con parámetros de enlace
 var enlaceDB = {
@@ -71,19 +71,23 @@ var Quiz = sequelize.import(definicionTabla);
 // y dar acceso para utilizar los elementos del modelo
 exports.Quiz = Quiz;
 
-// Objeto que encapsula un Quiz
-var quizActual = {
-  pregunta: "Capital de Italia",
-  respuesta: "Roma"
-};
-
-// Notificación de la inserción de datos
-var notificarInsercion = function () {
-  console.log("Base de datos inicializada");
-};
-
 // Callback de la cuenta de registros de la Base de Datos
 var inicializarDatos = function (numRegistros) {
+  // Objeto que encapsula un Quiz
+  var _quiz01 = {
+    pregunta: "Capital de Italia",
+    respuesta: "Roma"
+  };
+  var _quiz02 = {
+    pregunta: "Capital de Portugal",
+    respuesta: "Lisboa"
+  };
+
+  // Notificación de la inserción de datos
+  var _notificarInicializacion = function () {
+    console.log("Base de datos inicializada");
+  };
+
   // La tabla se inicializa sólo si está vacia
   if (numRegistros === 0) {
     // Inserta el quiz actual y notifica el estado
@@ -91,7 +95,11 @@ var inicializarDatos = function (numRegistros) {
     // los callbacks en sqlite. La forma nueva parace ser
     // el método "then"
     //    Quiz.create(quizActual).success(notificarInsercion);
-    Quiz.create(quizActual).then(notificarInsercion);
+    //    Quiz.create(quiz01).then(notificarInsercion);
+    //    console.log(quiz01);
+    //    Quiz.create(quiz02).then(notificarInsercion);
+    //    console.log(quiz02);
+    Quiz.bulkCreate([_quiz01, _quiz02]).then(_notificarInicializacion);
   }
 };
 

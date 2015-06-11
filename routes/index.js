@@ -70,16 +70,19 @@ function renderizarVistaCreditos(req, res) {
   });
 }
 
-// MW enrutado - GET - Home Page - http://localhost:3000
+// MW enrutado - GET - Home Page - http://localhost:5000 (foreman start)
 router.get('/', renderizarVistaHome);
 
-// MW enrutado - GET - Pregunta - http://localhost:3000/quizes/question
-router.get('/quizes/question', quizController.question);
+// MW enrutado - GET - Lista de quizes - http://localhost:5000/quizes
+router.get('/quizes', quizController.index);
 
-// MW enrutado - GET - Respuesta - http://localhost:3000/quizes/answer
-router.get('/quizes/answer', quizController.answer);
+// MW enrutado - GET - Mostrar pregunta - http://localhost:5000/quizes/7
+router.get('/quizes/:quizId(\\d+)', quizController.show);
 
-// MW enrutado - GET - Respuesta - http://localhost:3000/quizes/answer
+// MW enrutado - GET - Mostrar respuesta - http://localhost:5000/quizes/7/answer
+router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
+
+// MW enrutado - GET - Créditos - http://localhost:5000/author
 router.get('/author', renderizarVistaCreditos);
 
 // Exporta el enrutador
