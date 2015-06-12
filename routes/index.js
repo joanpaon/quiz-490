@@ -61,7 +61,7 @@ function renderizarVistaHome(req, res) {
   });
 }
 
-// Listener MW - Créditos
+// Créditos
 function renderizarVistaCreditos(req, res) {
   // Renderiza la vista 'author'
   res.render('creditos/author', {
@@ -70,19 +70,21 @@ function renderizarVistaCreditos(req, res) {
   });
 }
 
-// MW enrutado - GET - Home Page - http://localhost:5000 (foreman start)
+// Página de entrada - http://localhost:5000
 router.get('/', renderizarVistaHome);
 
-// MW enrutado - GET - Lista de quizes - http://localhost:5000/quizes
+// Autoload de comandos con :quizId
+// El método "param()" de express invoca quiz_controller.load() 
+// sólo SI EXISTE EL PARAMETRO :quizId en algún lugar de la
+// cabecera HTTP (en query, body o param)
+router.param('quizId', quizController.load);
+
+// Definición de rutas de /quizes
 router.get('/quizes', quizController.index);
-
-// MW enrutado - GET - Mostrar pregunta - http://localhost:5000/quizes/7
 router.get('/quizes/:quizId(\\d+)', quizController.show);
-
-// MW enrutado - GET - Mostrar respuesta - http://localhost:5000/quizes/7/answer
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 
-// MW enrutado - GET - Créditos - http://localhost:5000/author
+// Créditos - http://localhost:5000/author
 router.get('/author', renderizarVistaCreditos);
 
 // Exporta el enrutador

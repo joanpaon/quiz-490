@@ -1,76 +1,31 @@
 // Importa el modelo de la base de datos
 var models = require("../models/models.js");
 
-// Formular pregunta - GET /quizes/answer - DESCONECTADO
-var question = function (req, res) {
-  // Selecciona y renderiza el primer quiz disponible
-  var _renderizarRespuesta = function (quiz) {
-    // Parametros de renderización
-    var __paramRender = {
-      pregunta: quiz[0].pregunta
-    };
-
-    // Renderiza la vista de preguntas con la
-    // primera pregunta seleccionada
-    res.render("quizes/question", __paramRender);
-  };
-
-  // Recupera los registros de la BD en forma de array.
-  // Ese array se entrega como parámetro a su callback
-  // que selecciona el primero y lo renderiza
-  // models.Quiz.findAll().success(_seleccionarQuiz);
-  models.Quiz.findAll().then(_renderizarRespuesta);
+// Gestion de error
+var gestionarError = function (error) {
+  next(error);
 };
 
-// Comprobar respuesta - GET /quizes/:id/answer
-var answer = function (req, res) {
-  // Compara la respuesta del usuario con la del quiz seleccionado
+// Autoload - Factoriza el código si la ruta incluye :quizId
+var load = function (req, res, next, quizId) {
+  // Selecciona y renderiza el primer quiz disponible
   var _renderizarRespuesta = function (quizActual) {
-    // Parametros de renderización
-    var __paramRespuestaOK = {
-      quiz: quizActual,
-      respuesta: "Correcto"
-    };
-    var __paramRespuestaNO = {
-      quiz: quizActual,
-      respuesta: "Incorrecto"
-    };
+    // Comprueba si se ha indicado quiz
+    if (quizActual) {
+      // Memoriza el quiz
+      req.quiz = quizActual;
 
-    // Determina si la respuesta es correcta o no
-    if (req.query.respuesta === quizActual.respuesta) {
-      res.render("quizes/answer", __paramRespuestaOK);
+      // Llama al siguiente MW
+      next();
     } else {
-      res.render("quizes/answer", __paramRespuestaNO);
+      // Llama al siguiente MW de error
+      next(new Error("No existe quizId=" + quizId));
     }
   };
 
   // Recupera el registro de la BD que se corresponde con su
   // clave primaria "quizId"
-  // Ese registro se entrega como parámetro a su callback
-  // que compara su respuestra con la suministrada por el
-  // usuario y renderiza su corrección.
-  models.Quiz.findById(req.params.quizId).then(_renderizarRespuesta);
-};
-
-// Plantear el quiz seleccionado - GET /quizes/:id
-var show = function (req, res) {
-  // Muestra la pregunta del quiz actual
-  var _renderizarRespuesta = function (quizActual) {
-    // Parámetros de renderización
-    var __paramRender = {
-      quiz: quizActual
-    };
-
-    // Renderiza la vista de preguntas con la pregunta
-    // del quiz seleccionado
-    res.render("quizes/show", __paramRender);
-  };
-
-  // Recupera el registro de la BD que se corresponde con su
-  // clave primaria "quizId"
-  // Ese registro se entrega como parámetro a su callback
-  // que selecciona sólo la pregunta la renderiza
-  models.Quiz.findById(req.params.quizId).then(_renderizarRespuesta);
+  models.Quiz.findById(quizId).then(_renderizarRespuesta).catch(gestionarError);
 };
 
 // Mostrar la lista de quizes - GET /quizes/
@@ -91,10 +46,42 @@ var index = function (req, res) {
   // suministra en forma de array.
   // Esa lista se entrega como parámetro a su callback
   // que los muestra en forma de tabla
-  models.Quiz.findAll().then(_renderizarRespuesta);
+  models.Quiz.findAll().then(_renderizarRespuesta).catch(gestionarError);
+};
+
+// Plantear el quiz seleccionado - GET /quizes/:id
+var show = function (req, res) {
+  // Parámetros de renderización
+  var _paramRender = {
+    // Quiz actual
+    quiz: req.quiz
+  };
+
+  // Renderiza la vista de preguntas con la pregunta
+  // del quiz seleccionado
+  res.render("quizes/show", _paramRender);
+};
+
+// Comprobar respuesta - GET /quizes/:id/answer
+var answer = function (req, res) {
+  // Determina la corrección de la respuesta
+  var respuestaAct = "Incorrecto";
+  if (req.query.respuesta === req.quiz.respuesta) {
+    respuestaAct = "Correcto";
+  }
+
+  // Parametros de renderización
+  var _paramRender = {
+    quiz: req.quiz,
+    respuesta: respuestaAct
+  };
+
+  // Renderiza la evaluación de la respuesta del usuario
+  res.render("quizes/answer", _paramRender);
 };
 
 // Exportar funcionalidades
+exports.load   = load;
 exports.index  = index;
 exports.show   = show;
 exports.answer = answer;
