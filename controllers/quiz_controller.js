@@ -80,8 +80,49 @@ var answer = function (req, res) {
   res.render("quizes/answer", _paramRender);
 };
 
+// GET /quizes/new
+var nuevo = function (req, res) {
+  //
+  var _patronTabla = {
+    pregunta: "Pregunta",
+    respuesta: "Respuesta"
+  };
+
+  //
+  var _quiz = models.Quiz.build(_patronTabla);
+
+  // Parametros de renderización
+  var _paramRender = {
+    quiz: _quiz
+  };
+
+  //
+  res.render('quizes/new', _paramRender);
+};
+
+// POST /quizes/create
+var create = function (req, res) {
+  //
+  var _quiz = models.Quiz.build(req.body.quiz);
+
+  //
+  var _patronTabla = {
+    fields: ["pregunta", "respuesta"]
+  };
+
+  // res.redirect: Redirección HTTP a lista de preguntas
+  var _redirigirListaQuizes = function () {
+    res.redirect('/quizes');
+  };
+
+  // guarda en DB los campos pregunta y respuesta de quiz
+  _quiz.save(_patronTabla).then(_redirigirListaQuizes);
+};
+
 // Exportar funcionalidades
 exports.load   = load;
 exports.index  = index;
 exports.show   = show;
 exports.answer = answer;
+exports.new    = nuevo;
+exports.create = create;

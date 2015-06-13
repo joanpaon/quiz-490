@@ -12,13 +12,13 @@ label.rem {
   display: none;
 }
 
-body {
-  font-size: xx-large;
-}
-
 input,
 button {
   font-size: x-large;
+}
+
+body {
+  font-size: xx-large;
 }
 
 footer {

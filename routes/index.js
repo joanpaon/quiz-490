@@ -77,12 +77,14 @@ router.get('/', renderizarVistaHome);
 // El método "param()" de express invoca quiz_controller.load() 
 // sólo SI EXISTE EL PARAMETRO :quizId en algún lugar de la
 // cabecera HTTP (en query, body o param)
-router.param('quizId', quizController.load);
+router.param('quizId',                     quizController.load);
 
 // Definición de rutas de /quizes
-router.get('/quizes', quizController.index);
-router.get('/quizes/:quizId(\\d+)', quizController.show);
+router.get('/quizes',                      quizController.index);
+router.get('/quizes/:quizId(\\d+)',        quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
+router.get('/quizes/new',                  quizController.new);
+router.post('/quizes/create',               quizController.create);
 
 // Créditos - http://localhost:5000/author
 router.get('/author', renderizarVistaCreditos);
