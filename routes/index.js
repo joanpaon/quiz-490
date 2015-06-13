@@ -57,7 +57,8 @@ var router = express.Router();
 function renderizarVistaHome(req, res) {
   // Renderiza la vista 'index'
   res.render('index', {
-    title: 'Quiz'
+    title: 'Quiz',
+    errors: []
   });
 }
 
@@ -66,7 +67,8 @@ function renderizarVistaCreditos(req, res) {
   // Renderiza la vista 'author'
   res.render('creditos/author', {
     title: 'Quiz',
-    author: "José A. Pacheco Ondoño"
+    author: "José A. Pacheco Ondoño",
+    errors: []
   });
 }
 
@@ -77,14 +79,14 @@ router.get('/', renderizarVistaHome);
 // El método "param()" de express invoca quiz_controller.load() 
 // sólo SI EXISTE EL PARAMETRO :quizId en algún lugar de la
 // cabecera HTTP (en query, body o param)
-router.param('quizId',                     quizController.load);
+router.param('quizId', quizController.load);
 
 // Definición de rutas de /quizes
-router.get('/quizes',                      quizController.index);
-router.get('/quizes/:quizId(\\d+)',        quizController.show);
+router.get('/quizes', quizController.index);
+router.get('/quizes/:quizId(\\d+)', quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
-router.get('/quizes/new',                  quizController.new);
-router.post('/quizes/create',              quizController.create);
+router.get('/quizes/new', quizController.new);
+router.post('/quizes/create', quizController.create);
 
 // Créditos - http://localhost:5000/author
 router.get('/author', renderizarVistaCreditos);

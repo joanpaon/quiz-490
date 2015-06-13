@@ -42,3 +42,8 @@ nav span {
 table {
   width: 100%;
 }
+
+#ErrorMsgs {
+  color: #f61;
+  font-size: small;
+}

@@ -34,7 +34,8 @@ var index = function (req, res) {
   var _renderizarRespuesta = function (listaQuizes) {
     // Parámetros de renderización
     var __paramRender = {
-      quizes: listaQuizes
+      quizes: listaQuizes,
+      errors: []
     };
 
     // Renderiza la vista de preguntas con la pregunta
@@ -75,7 +76,8 @@ var show = function (req, res) {
   // Parámetros de renderización
   var _paramRender = {
     // Quiz actual
-    quiz: req.quiz
+    quiz: req.quiz,
+    errors: []
   };
 
   // Renderiza la vista de preguntas con la pregunta
@@ -94,7 +96,8 @@ var answer = function (req, res) {
   // Parametros de renderización
   var _paramRender = {
     quiz: req.quiz,
-    respuesta: _respuestaAct
+    respuesta: _respuestaAct,
+    errors: []
   };
 
   // Renderiza la evaluación de la respuesta del usuario
@@ -114,7 +117,8 @@ var nuevo = function (req, res) {
 
   // Parametros de renderización
   var _paramRender = {
-    quiz: _quiz
+    quiz: _quiz,
+    errors: []
   };
 
   //
@@ -123,21 +127,39 @@ var nuevo = function (req, res) {
 
 // POST /quizes/create
 var create = function (req, res) {
-  //
+  // Objeto que mapea la BD
   var _quiz = models.Quiz.build(req.body.quiz);
 
-  //
-  var _patronTabla = {
-    fields: ["pregunta", "respuesta"]
+  // Procesar el resultado de la validación
+  var _procesarValidacion = function (error) {
+    if (error) {
+      // Parámetros de renderizado
+      var _paramRenderizado = {
+        quiz: _quiz,
+        errors: error.errors
+      };
+
+      // Renderiza los errores 
+      res.render("quizes/new", _paramRenderizado);
+    } else {
+      // Explicita los campos que se van a guardar
+      var _patronTabla = {
+        fields: ["pregunta", "respuesta"]
+      };
+
+      // res.redirect: Redirección HTTP a la lista de preguntas
+      var _redirigirListaQuizes = function () {
+        res.redirect('/quizes');
+      };
+
+      // Guarda en la BD la pregunta y la respuesta del nuevo quiz
+      // Después muestra la lista de preguntas actualizada
+      _quiz.save(_patronTabla).then(_redirigirListaQuizes);
+    }
   };
 
-  // res.redirect: Redirección HTTP a lista de preguntas
-  var _redirigirListaQuizes = function () {
-    res.redirect('/quizes');
-  };
-
-  // guarda en DB los campos pregunta y respuesta de quiz
-  _quiz.save(_patronTabla).then(_redirigirListaQuizes);
+  // Valida los campos
+  _quiz.validate().then(_procesarValidacion);
 };
 
 // Exportar funcionalidades

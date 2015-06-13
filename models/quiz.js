@@ -1,13 +1,54 @@
-// Nombre de la tabla / Objetos
-var nombreTabla = "Quiz";
+var modelarTabla = function (sequelize, DataTypes) {
+  // Nombre de la tabla / Objetos
+  var _nombreTabla = "Quiz";
 
-// Definición del modelo de Quiz
-module.exports = function (sequelize, DataTypes) {
-  // Definición de campos
-  var _estructuraCampos = {
-    pregunta: DataTypes.STRING,
-    respuesta: DataTypes.STRING
+  // Mensaje de validación pregunta
+  var _msgValPregunta = {
+    msg: " --> Falta pregunta"
   };
 
-  return sequelize.define(nombreTabla, _estructuraCampos);
+  // Validador de pregunta
+  var _validadorPregunta = {
+    notEmpty: _msgValPregunta
+  };
+
+  // Definición de pregunta
+  var _estructuraPregunta = {
+    type: DataTypes.STRING,
+    validate: _validadorPregunta
+  };
+
+  // ---
+
+  // Mensaje de validación respuesta
+  var _msgValRespuesta = {
+    msg: " --> Falta respuesta"
+  };
+
+  // Validador de respuesta
+  var _validadorRespuesta = {
+    notEmpty: _msgValRespuesta
+  };
+
+  // Definición de pregunta
+  var _estructuraRespuesta = {
+    type: DataTypes.STRING,
+    validate: _validadorRespuesta
+  };
+
+  // ---
+
+  // Definición de la estructura de campos
+  var _estructuraCampos = {
+    pregunta: _estructuraPregunta,
+    respuesta: _estructuraRespuesta
+  };
+
+  // ---
+
+  // Devuelve el modelo de la tabla
+  return sequelize.define(_nombreTabla, _estructuraCampos);
 };
+
+// Exporta el modelo de la tabla
+module.exports = modelarTabla;
