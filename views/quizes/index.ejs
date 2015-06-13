@@ -1,30 +1,18 @@
 <table>
-<<<<<<< HEAD
-  <% for (var i=0 ; i < quizes.length; i++) { %>
-    <tr>
-      <td>
-        <a href="/quizes/<%=quizes[i].id%>">
-          <%=quizes[i].pregunta%>
-        </a>
-=======
-  <% for (var i = 0 ; i < quizes.length; i++) { %>
+  <% for (var i=0; i < quizes.length; i++) { %>
     <tr>
       <td>
         <a href="/quizes/<%=quizes[i].id%>"><%=quizes[i].pregunta%></a>
->>>>>>> origin/master
       </td>
     </tr>
   <% } %>
 </table>
-<hr>
-<<<<<<< HEAD
-<a href="/quizes/new">
-  <button type="button">Crear pregunta</button>
-</a>
-=======
 <form method="get" action="/quizes">
   <label for="search">Quiz</label>
   <input type="text" id="search" name="search" placeholder="Patrón de búsqueda" />
   <input type="submit" value="Buscar" />
 </form>
->>>>>>> origin/master
+<hr>
+<a href="/quizes/new">
+  <button type="button">Crear pregunta</button>
+</a>

@@ -44,7 +44,7 @@ var index = function (req, res) {
 
   // Extrae el parámetro de la URL que contiene el texto
   // que el usuario ha introducido en el campo de busqueda
-  var patronBusqueda = req.query.search || "";
+  var _patronBusqueda = req.query.search || "";
 
   // Sustituye los espacios por el caracter "%" que también
   // se pone al principio y al final
@@ -53,13 +53,13 @@ var index = function (req, res) {
   // La expresión regular, delimitada por caracteres "/",
   // busca cualquier separador "\s" en toda la cadena "g"
   // de forma insensible a mayusculas o minúsculas "i"
-  patronBusqueda = "%" + patronBusqueda.replace(/\s/gi, "%") + "%";
+  _patronBusqueda = "%" + _patronBusqueda.replace(/\s/gi, "%") + "%";
 
   // Objeto que modela una pseudo clausula WHERE de SQL
-  var paramBusqueda = {
+  var _paramBusqueda = {
     // El comodin "?" de la expresión de la primera posición
     // del array se sustituye por el contenido de la segunda posición
-    where: ["pregunta like ?", patronBusqueda]
+    where: ["pregunta like ?", _patronBusqueda]
   };
 
   // Recupera de la BD los quizes almacenados en cuya pregunta
@@ -67,8 +67,7 @@ var index = function (req, res) {
   // suministra en forma de array.
   // Esa lista se entrega como parámetro a su callback
   // que los muestra en forma de tabla
-  models.Quiz.findAll().then(_renderizarRespuesta).catch(gestionarError);
-  models.Quiz.findAll(paramBusqueda).then(_renderizarRespuesta).catch(gestionarError);
+  models.Quiz.findAll(_paramBusqueda).then(_renderizarRespuesta).catch(gestionarError);
 };
 
 // Plantear el quiz seleccionado - GET /quizes/:id
@@ -87,15 +86,15 @@ var show = function (req, res) {
 // Comprobar respuesta - GET /quizes/:id/answer
 var answer = function (req, res) {
   // Determina la corrección de la respuesta
-  var respuestaAct = "Incorrecto";
+  var _respuestaAct = "Incorrecto";
   if (req.query.respuesta === req.quiz.respuesta) {
-    respuestaAct = "Correcto";
+    _respuestaAct = "Correcto";
   }
 
   // Parametros de renderización
   var _paramRender = {
     quiz: req.quiz,
-    respuesta: respuestaAct
+    respuesta: _respuestaAct
   };
 
   // Renderiza la evaluación de la respuesta del usuario
@@ -142,16 +141,9 @@ var create = function (req, res) {
 };
 
 // Exportar funcionalidades
-<<<<<<< HEAD
 exports.load   = load;
 exports.index  = index;
 exports.show   = show;
 exports.answer = answer;
 exports.new    = nuevo;
 exports.create = create;
-=======
-exports.load = load;
-exports.index = index;
-exports.show = show;
-exports.answer = answer;
->>>>>>> origin/master
