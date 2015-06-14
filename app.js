@@ -46,6 +46,9 @@ var bodyParser = require('body-parser');
 // 
 var partials = require("express-partials");
 
+//
+var methodOverride = require("method-override");
+
 // Importa los enrutadores como si fueran módulos
 // En la referencia a estos módulos
 //  > La extensión ".js" se puede omitir
@@ -81,6 +84,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(methodOverride("_method"));
 
 // Monta MWs - static - Por omisión de 'path' para cualquier ruta
 app.use(express.static(path.join(__dirname, 'public')));

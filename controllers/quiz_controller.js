@@ -134,13 +134,13 @@ var create = function (req, res) {
   var _procesarValidacion = function (error) {
     if (error) {
       // Parámetros de renderizado
-      var _paramRenderizado = {
+      var _paramRender = {
         quiz: _quiz,
         errors: error.errors
       };
 
       // Renderiza los errores 
-      res.render("quizes/new", _paramRenderizado);
+      res.render("quizes/new", _paramRender);
     } else {
       // Explicita los campos que se van a guardar
       var _patronTabla = {
@@ -162,6 +162,59 @@ var create = function (req, res) {
   _quiz.validate().then(_procesarValidacion);
 };
 
+// GET /quizes/:id/edit
+var edit = function (req, res) {
+  // Autoload de una instancia de quiz
+  var _quiz = req.quiz;
+
+  // Parametros de renderización
+  var _paramRender = {
+    quiz: _quiz,
+    errors: []
+  };
+
+  // Renderiza la página de petición de edición
+  res.render('quizes/edit', _paramRender);
+};
+
+// PUT /quizes/:id
+var update = function (req, res) {
+  // Memoriza los valores recibidos pregunta/respuesta
+  req.quiz.pregunta = req.body.quiz.pregunta;
+  req.quiz.respuesta = req.body.quiz.respuesta;
+  
+  // Procesar el resultado de la validación
+  var _procesarValidacion = function (error) {
+    if (error) {
+      // Parámetros de renderizado
+      var _paramRender = {
+        quiz: req.quiz,
+        errors: error.errors
+      };
+
+      // Renderiza los errores 
+      res.render("quizes/edit", _paramRender);
+    } else {
+      // Explicita los campos que se van a guardar
+      var _patronTabla = {
+        fields: ["pregunta", "respuesta"]
+      };
+
+      // res.redirect: Redirección HTTP a la lista de preguntas
+      var _redirigirListaQuizes = function () {
+        res.redirect('/quizes');
+      };
+
+      // Guarda en la BD la pregunta y la respuesta del nuevo quiz
+      // Después muestra la lista de preguntas actualizada
+      req.quiz.save(_patronTabla).then(_redirigirListaQuizes);
+    }
+  };
+
+  // Valida los campos
+  req.quiz.validate().then(_procesarValidacion);
+};
+
 // Exportar funcionalidades
 exports.load   = load;
 exports.index  = index;
@@ -169,3 +222,5 @@ exports.show   = show;
 exports.answer = answer;
 exports.new    = nuevo;
 exports.create = create;
+exports.edit   = edit;
+exports.update = update;
