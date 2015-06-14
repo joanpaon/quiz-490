@@ -182,7 +182,7 @@ var update = function (req, res) {
   // Memoriza los valores recibidos pregunta/respuesta
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
-  
+
   // Procesar el resultado de la validación
   var _procesarValidacion = function (error) {
     if (error) {
@@ -215,12 +215,25 @@ var update = function (req, res) {
   req.quiz.validate().then(_procesarValidacion);
 };
 
+// DELETE /quizes/:id
+var destroy = function (req, res) {
+  // res.redirect: Redirección HTTP a la lista de preguntas
+  var _redirigirListaQuizes = function () {
+    res.redirect('/quizes');
+  };
+
+  // Borra de la BD el quiz actual
+  // Después muestra la lista de preguntas actualizada
+  req.quiz.destroy().then(_redirigirListaQuizes).catch(gestionarError);
+};
+
 // Exportar funcionalidades
-exports.load   = load;
-exports.index  = index;
-exports.show   = show;
-exports.answer = answer;
-exports.new    = nuevo;
-exports.create = create;
-exports.edit   = edit;
-exports.update = update;
+exports.load    = load;
+exports.index   = index;
+exports.show    = show;
+exports.answer  = answer;
+exports.new     = nuevo;
+exports.create  = create;
+exports.edit    = edit;
+exports.update  = update;
+exports.destroy = destroy;
