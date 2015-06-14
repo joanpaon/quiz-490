@@ -24,7 +24,7 @@
       <% if (errors.length) { %>
         <span id="ErrorMsgs">
           Corregir errores:<br/>
-          <% for (var i in errors) { %>
+          <% for (var i = 0; i < errors.length; i++) { %>
             <span><%= errors[i].message %></span><br/>
           <% } %>
         </span>

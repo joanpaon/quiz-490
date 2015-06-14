@@ -6,6 +6,9 @@ var gestionarError = function (error) {
   next(error);
 };
 
+// Lista de temáticas
+var tematicas = ["Otro", "Humanidades", "Ocio", "Ciencia", "Tecnología"];
+
 // Autoload - Factoriza el código si la ruta incluye :quizId
 var load = function (req, res, next, quizId) {
   // Selecciona y renderiza el primer quiz disponible
@@ -35,7 +38,8 @@ var index = function (req, res) {
     // Parámetros de renderización
     var __paramRender = {
       quizes: listaQuizes,
-      errors: []
+      errors: [],
+      tematicas: tematicas
     };
 
     // Renderiza la vista de preguntas con la pregunta
@@ -53,7 +57,7 @@ var index = function (req, res) {
   // cadena de caracteres.
   // La expresión regular, delimitada por caracteres "/",
   // busca cualquier separador "\s" en toda la cadena "g"
-  // de forma insensible a mayusculas o minúsculas "i"
+  // de forma insensible a mayúsculas o minúsculas "i"
   _patronBusqueda = "%" + _patronBusqueda.replace(/\s/gi, "%") + "%";
 
   // Objeto que modela una pseudo clausula WHERE de SQL
@@ -108,8 +112,9 @@ var answer = function (req, res) {
 var nuevo = function (req, res) {
   //
   var _patronTabla = {
-    pregunta: "Pregunta",
-    respuesta: "Respuesta"
+    pregunta:  "Pregunta",
+    respuesta: "Respuesta",
+    tematica:  "Otro"
   };
 
   //
@@ -118,7 +123,8 @@ var nuevo = function (req, res) {
   // Parametros de renderización
   var _paramRender = {
     quiz: _quiz,
-    errors: []
+    errors: [],
+    tematicas: tematicas
   };
 
   //
@@ -136,7 +142,8 @@ var create = function (req, res) {
       // Parámetros de renderizado
       var _paramRender = {
         quiz: _quiz,
-        errors: error.errors
+        errors: error.errors,
+        tematicas: tematicas
       };
 
       // Renderiza los errores 
@@ -144,7 +151,7 @@ var create = function (req, res) {
     } else {
       // Explicita los campos que se van a guardar
       var _patronTabla = {
-        fields: ["pregunta", "respuesta"]
+        fields: ["pregunta", "respuesta", "tematica"]
       };
 
       // res.redirect: Redirección HTTP a la lista de preguntas
@@ -170,7 +177,8 @@ var edit = function (req, res) {
   // Parametros de renderización
   var _paramRender = {
     quiz: _quiz,
-    errors: []
+    errors: [],
+    tematicas: tematicas
   };
 
   // Renderiza la página de petición de edición
@@ -182,6 +190,7 @@ var update = function (req, res) {
   // Memoriza los valores recibidos pregunta/respuesta
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
+  req.quiz.tematica = req.body.quiz.tematica;
 
   // Procesar el resultado de la validación
   var _procesarValidacion = function (error) {
@@ -189,7 +198,8 @@ var update = function (req, res) {
       // Parámetros de renderizado
       var _paramRender = {
         quiz: req.quiz,
-        errors: error.errors
+        errors: error.errors,
+        tematicas: tematicas
       };
 
       // Renderiza los errores 
@@ -197,7 +207,7 @@ var update = function (req, res) {
     } else {
       // Explicita los campos que se van a guardar
       var _patronTabla = {
-        fields: ["pregunta", "respuesta"]
+        fields: ["pregunta", "respuesta", "tematica"]
       };
 
       // res.redirect: Redirección HTTP a la lista de preguntas

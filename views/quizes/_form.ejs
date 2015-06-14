@@ -1,10 +1,18 @@
-<label for="preg" class="rem">Pregunta:</label>
-<input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>" />
-<br>
-<label for="resp" class="rem">Respuesta:</label>
-<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>" />
-<br>
-<a href="/quizes">
-  <button type="button">Cancelar</button>
-</a>
+<label for="pregunta" class="rem">Pregunta:</label>
+<input type="text" id="pregunta" name="quiz[pregunta]" value="<%= quiz.pregunta %>" />
+<br/>
+<label for="respuesta" class="rem">Respuesta:</label>
+<input type="text" id="respuesta" name="quiz[respuesta]" value="<%= quiz.respuesta %>" />
+<br/>
+<label for="tematica" class="rem">Temática:</label>
+<select id="tematica" name="quiz[tematica]">
+  <% 
+    for (var i = 0; i < tematicas.length; i++) {
+      var selectedOK = ((quiz.tematica === tematicas[i]) ? "selected" : "");
+  %>
+    <option value="<%=tematicas[i]%>" <%=selectedOK%>><%=tematicas[i]%></option>
+  <% } %>
+</select>
+<br/>
+<a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">

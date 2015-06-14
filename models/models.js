@@ -21,10 +21,10 @@ var database = (url[6] || null);
 var username = (url[2] || null);
 var password = (url[3] || null);
 var protocol = (url[1] || null);
-var dialect = (url[1] || null);
-var port = (url[5] || null);
-var host = (url[4] || null);
-var storage = process.env.DATABASE_STORAGE;
+var dialect  = (url[1] || null);
+var port     = (url[5] || null);
+var host     = (url[4] || null);
+var storage  = process.env.DATABASE_STORAGE;
 
 // Objeto con parámetros de enlace
 var enlaceDB = {
@@ -75,12 +75,14 @@ exports.Quiz = Quiz;
 var inicializarDatos = function (numRegistros) {
   // Objeto que encapsula un Quiz
   var _quiz01 = {
-    pregunta: "Capital de Italia",
-    respuesta: "Roma"
+    pregunta:  "Capital de Italia",
+    respuesta: "Roma",
+    tematica:  "Humanidades"
   };
   var _quiz02 = {
-    pregunta: "Capital de Portugal",
-    respuesta: "Lisboa"
+    pregunta:  "Capital de Portugal",
+    respuesta: "Lisboa",
+    tematica:  "Humanidades"
   };
 
   // Notificación de la inserción de datos
@@ -94,11 +96,6 @@ var inicializarDatos = function (numRegistros) {
     // El método "success" es la forma antigua de manejar
     // los callbacks en sqlite. La forma nueva parace ser
     // el método "then"
-    //    Quiz.create(quizActual).success(notificarInsercion);
-    //    Quiz.create(quiz01).then(notificarInsercion);
-    //    console.log(quiz01);
-    //    Quiz.create(quiz02).then(notificarInsercion);
-    //    console.log(quiz02);
     Quiz.bulkCreate([_quiz01, _quiz02]).then(_notificarInicializacion);
   }
 };
@@ -106,7 +103,6 @@ var inicializarDatos = function (numRegistros) {
 // Callback de creación de la Base de Datos
 var inicializarBD = function () {
   // Cuenta el número de registros
-  //  Quiz.count().success(inicializarDatos);
   Quiz.count().then(inicializarDatos);
 };
 
@@ -116,5 +112,4 @@ var inicializarBD = function () {
 // Fisicamente crea el archivo "quiz.sqlite"
 // Tras la creación se iniciaciza la BD con una primera
 // pregunta
-//sequelize.sync().success(inicializarBD);
 sequelize.sync().then(inicializarBD);

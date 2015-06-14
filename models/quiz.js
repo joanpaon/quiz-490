@@ -1,6 +1,8 @@
 var modelarTabla = function (sequelize, DataTypes) {
   // Nombre de la tabla / Objetos
   var _nombreTabla = "Quiz";
+  
+  // ---
 
   // Mensaje de validación pregunta
   var _msgValPregunta = {
@@ -30,7 +32,7 @@ var modelarTabla = function (sequelize, DataTypes) {
     notEmpty: _msgValRespuesta
   };
 
-  // Definición de pregunta
+  // Definición de respuesta
   var _estructuraRespuesta = {
     type: DataTypes.STRING,
     validate: _validadorRespuesta
@@ -38,10 +40,29 @@ var modelarTabla = function (sequelize, DataTypes) {
 
   // ---
 
+  // Mensaje de validación temática
+  var _msgValTematica = {
+    msg: " --> Falta temática"
+  };
+
+  // Validador de temática
+  var _validadorTematica = {
+    notEmpty: _msgValTematica
+  };
+
+  // Definición de temática
+  var _estructuraTematica = {
+    type: DataTypes.STRING,
+    validate: _validadorTematica
+  };
+
+  // ---
+
   // Definición de la estructura de campos
   var _estructuraCampos = {
-    pregunta: _estructuraPregunta,
-    respuesta: _estructuraRespuesta
+    pregunta:  _estructuraPregunta,
+    respuesta: _estructuraRespuesta,
+    tematica:  _estructuraTematica
   };
 
   // ---
