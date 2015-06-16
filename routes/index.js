@@ -1,6 +1,9 @@
 // Carga los modulos necesarios para la aplicación
 var express = require('express');
-var quizController = require('../controllers/quiz_controller');
+
+// Carga los controladores
+var quizController    = require('../controllers/quiz_controller');
+var commentController = require('../controllers/comment_controller');
 
 // Un objeto "router" es una instancia aislada de middleware y rutas.
 // Puede considerarse como una “mini-aplicación,” capacitada únicamente
@@ -81,15 +84,19 @@ router.get('/', renderizarVistaHome);
 // cabecera HTTP (en query, body o param)
 router.param('quizId', quizController.load);
 
-// Definición de rutas de /quizes
-router.get('/quizes',                      quizController.index);
-router.get('/quizes/:quizId(\\d+)',        quizController.show);
-router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
-router.get('/quizes/new',                  quizController.new);
-router.post('/quizes/create',              quizController.create);
-router.get('/quizes/:quizId(\\d+)/edit',   quizController.edit);
-router.put('/quizes/:quizId(\\d+)',        quizController.update);
-router.delete('/quizes/:quizId(\\d+)',     quizController.destroy);
+// Definición de rutas de /quizes - quizController
+router.get('/quizes',                            quizController.index);
+router.get('/quizes/:quizId(\\d+)',              quizController.show);
+router.get('/quizes/:quizId(\\d+)/answer',       quizController.answer);
+router.get('/quizes/new',                        quizController.new);
+router.post('/quizes/create',                    quizController.create);
+router.get('/quizes/:quizId(\\d+)/edit',         quizController.edit);
+router.put('/quizes/:quizId(\\d+)',              quizController.update);
+router.delete('/quizes/:quizId(\\d+)',           quizController.destroy);
+
+// Definición de rutas de /quizes - commentController
+router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
+router.post('/quizes/:quizId(\\d+)/comments',    commentController.create);
 
 // Créditos - http://localhost:5000/author
 router.get('/author', renderizarVistaCreditos);

@@ -62,14 +62,23 @@ var sequelize = new Sequelize(database, username, password, enlaceDB);
 // El objeto global "__dirname" contiene la ruta de la carpeta del
 // script que se está ejecutando, models.js, que es la misma carpeta
 // que contiene la definición de la tabla "quiz.js".
-var definicionTabla = path.join(__dirname, "quiz");
+var rutaModeloQuiz = path.join(__dirname, "quiz");
 
 // Genera un ORM para la tabla "quiz" definida en "./models/quiz.js"
-var Quiz = sequelize.import(definicionTabla);
+var Quiz = sequelize.import(rutaModeloQuiz);
+
+// Definición de la tabla comment
+var rutaModeloComment = path.join(__dirname, "comment");
+var Comment = sequelize.import(rutaModeloComment);
+
+// Relación entre tablas Quiz y Comment - 1:N
+Comment.belongsTo(Quiz);
+Quiz.hasMany(Comment);
 
 // Exporta el ORM para que se pueda utilizar en otras partes de la aplicación
 // y dar acceso para utilizar los elementos del modelo
-exports.Quiz = Quiz;
+exports.Quiz    = Quiz;
+exports.Comment = Comment;
 
 // Callback de la cuenta de registros de la Base de Datos
 var inicializarDatos = function (numRegistros) {

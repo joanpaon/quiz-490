@@ -11,6 +11,17 @@ var tematicas = ["Otro", "Humanidades", "Ocio", "Ciencia", "Tecnología"];
 
 // Autoload - Factoriza el código si la ruta incluye :quizId
 var load = function (req, res, next, quizId) {
+  // Parámetros de busqueda
+  // El parámetro "where: {id: Number(quizId)}" de "find" establece la búsqueda
+  // del quiz identificado por "quizId".
+  // Además, el parámetro "include: [{model: models.Comment}]" de "find"
+  // solicita cargar en la propiedad "quiz.Comments", los comentarios
+  // asociados al quiz a través de la relación 1:N entre Quiz y Comment
+  var _paramBusqueda = {
+    where: {id: Number(quizId)},
+    include: [{model: models.Comment}]
+  };
+  
   // Selecciona y renderiza el primer quiz disponible
   var _renderizarRespuesta = function (quizActual) {
     // Comprueba si se ha indicado quiz
@@ -26,9 +37,8 @@ var load = function (req, res, next, quizId) {
     }
   };
 
-  // Recupera el registro de la BD que se corresponde con su
-  // clave primaria "quizId"
-  models.Quiz.findById(quizId).then(_renderizarRespuesta).catch(gestionarError);
+  // Recupera el registro de la BD que se corresponde la espècificación de búsqueda
+  models.Quiz.find(_paramBusqueda).then(_renderizarRespuesta).catch(gestionarError);
 };
 
 // Mostrar la lista de quizes - GET /quizes/
@@ -140,28 +150,28 @@ var create = function (req, res) {
   var _procesarValidacion = function (error) {
     if (error) {
       // Parámetros de renderizado
-      var _paramRender = {
+      var __paramRender = {
         quiz: _quiz,
         errors: error.errors,
         tematicas: tematicas
       };
 
       // Renderiza los errores 
-      res.render("quizes/new", _paramRender);
+      res.render("quizes/new", __paramRender);
     } else {
       // Explicita los campos que se van a guardar
-      var _patronTabla = {
+      var __patronTabla = {
         fields: ["pregunta", "respuesta", "tematica"]
       };
 
       // res.redirect: Redirección HTTP a la lista de preguntas
-      var _redirigirListaQuizes = function () {
+      var __redirigirVista = function () {
         res.redirect('/quizes');
       };
 
       // Guarda en la BD la pregunta y la respuesta del nuevo quiz
       // Después muestra la lista de preguntas actualizada
-      _quiz.save(_patronTabla).then(_redirigirListaQuizes);
+      _quiz.save(__patronTabla).then(__redirigirVista);
     }
   };
 
@@ -196,28 +206,28 @@ var update = function (req, res) {
   var _procesarValidacion = function (error) {
     if (error) {
       // Parámetros de renderizado
-      var _paramRender = {
+      var __paramRender = {
         quiz: req.quiz,
         errors: error.errors,
         tematicas: tematicas
       };
 
       // Renderiza los errores 
-      res.render("quizes/edit", _paramRender);
+      res.render("quizes/edit", __paramRender);
     } else {
       // Explicita los campos que se van a guardar
-      var _patronTabla = {
+      var __patronTabla = {
         fields: ["pregunta", "respuesta", "tematica"]
       };
 
       // res.redirect: Redirección HTTP a la lista de preguntas
-      var _redirigirListaQuizes = function () {
+      var __redirigirVista = function () {
         res.redirect('/quizes');
       };
 
       // Guarda en la BD la pregunta y la respuesta del nuevo quiz
       // Después muestra la lista de preguntas actualizada
-      req.quiz.save(_patronTabla).then(_redirigirListaQuizes);
+      req.quiz.save(__patronTabla).then(__redirigirVista);
     }
   };
 
