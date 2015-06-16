@@ -4,6 +4,7 @@ var express = require('express');
 // Carga los controladores
 var quizController    = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
+var sessionController = require('../controllers/session_controller');
 
 // Un objeto "router" es una instancia aislada de middleware y rutas.
 // Puede considerarse como una “mini-aplicación,” capacitada únicamente
@@ -83,6 +84,11 @@ router.get('/', renderizarVistaHome);
 // sólo SI EXISTE EL PARAMETRO :quizId en algún lugar de la
 // cabecera HTTP (en query, body o param)
 router.param('quizId', quizController.load);
+
+// Definición de rutas de sesión - sessionController
+router.get('/login',                             sessionController.new);
+router.post('/login',                            sessionController.create);
+router.get('/logout',                            sessionController.destroy);
 
 // Definición de rutas de /quizes - quizController
 router.get('/quizes',                            quizController.index);

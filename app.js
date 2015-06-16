@@ -49,6 +49,9 @@ var partials = require("express-partials");
 //
 var methodOverride = require("method-override");
 
+// Gestión de sesiones
+var session = require("express-session");
+
 // Importa los enrutadores como si fueran módulos
 // En la referencia a estos módulos
 //  > La extensión ".js" se puede omitir
@@ -83,11 +86,24 @@ app.use(logger('dev'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser("Quiz 2015"));  // Semilla para cifrar las cookies
+app.use(session());
 app.use(methodOverride("_method"));
 
 // Monta MWs - static - Por omisión de 'path' para cualquier ruta
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Helpers dinámicos
+app.use(function (req, res, next) {
+  // Guardar el path en "session.redir" para después de login
+  if (!req.path.match(/\/login|\/logout/)) {
+    req.session.redir = req.path;
+  }
+  
+  // Hacer visible "req.session" en las vistas
+  res.locals.session = req.session;
+  next();
+});
 
 // Monta MWs enrutadores
 app.use('/', routes);
