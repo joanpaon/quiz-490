@@ -1,3 +1,13 @@
+// MW de autorización de accesos HTTP restringidos
+var loginRequired = function (req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+};
+
+
 // GET /login - Formulario de login
 var nuevo = function (req, res) {
   // Memoriza los errores de la sesión
@@ -57,6 +67,7 @@ var destroy = function (req, res) {
 };
 
 // Exportar funcionalidades
-exports.new     = nuevo;
-exports.create  = create;
-exports.destroy = destroy;
+exports.new           = nuevo;
+exports.create        = create;
+exports.destroy       = destroy;
+exports.loginRequired = loginRequired;
