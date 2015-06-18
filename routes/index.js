@@ -85,6 +85,12 @@ router.get('/', renderizarVistaHome);
 // cabecera HTTP (en query, body o param)
 router.param('quizId', quizController.load);
 
+// Autoload :commentId
+// Autoload se instala con "router.param('commentId', commentController.load))"
+// para que el comentario esté preparado cuando se atienda la nueva transacción
+// de publicación de comentarios GET /quizes/:quizId/comments/:commentId/publish
+router.param('commentId', commentController.load);
+
 // Definición de rutas de sesión - sessionController
 router.get('/login',                             sessionController.new);
 router.post('/login',                            sessionController.create);
@@ -113,9 +119,10 @@ router.get('/quizes/:quizId(\\d+)/edit',         sessionController.loginRequired
 router.put('/quizes/:quizId(\\d+)',              sessionController.loginRequired, quizController.update);
 router.delete('/quizes/:quizId(\\d+)',           sessionController.loginRequired, quizController.destroy);
 
-// Definición de rutas de /quizes - commentController
-router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
-router.post('/quizes/:quizId(\\d+)/comments',    commentController.create);
+// Definición de rutas de comentarios - commentController
+router.get('/quizes/:quizId(\\d+)/comments/new',                      commentController.new);
+router.post('/quizes/:quizId(\\d+)/comments',                         commentController.create);
+router.get('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', sessionController.loginRequired, commentController.publish);
 
 // Créditos - http://localhost:5000/author
 router.get('/author', renderizarVistaCreditos);

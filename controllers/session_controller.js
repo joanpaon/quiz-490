@@ -67,7 +67,7 @@ var destroy = function (req, res) {
 };
 
 // Exportar funcionalidades
+exports.loginRequired = loginRequired;
 exports.new           = nuevo;
 exports.create        = create;
 exports.destroy       = destroy;
-exports.loginRequired = loginRequired;

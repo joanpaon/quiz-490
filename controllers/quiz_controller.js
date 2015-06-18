@@ -37,7 +37,7 @@ var load = function (req, res, next, quizId) {
     }
   };
 
-  // Recupera el registro de la BD que se corresponde la espècificación de búsqueda
+  // Recupera el registro de la BD que se corresponde la especificación de búsqueda
   models.Quiz.find(_paramBusqueda).then(_renderizarRespuesta).catch(gestionarError);
 };
 

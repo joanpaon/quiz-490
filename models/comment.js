@@ -23,9 +23,18 @@ var modelarTabla = function (sequelize, DataTypes) {
 
   // ---
 
+  // Definición de publicado
+  var _estructuraPublicado = {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  };
+
+  // ---
+
   // Definición de la estructura de campos
   var _estructuraCampos = {
-    texto: _estructuraComentario
+    texto: _estructuraComentario,
+    publicado: _estructuraPublicado
   };
 
   // ---
