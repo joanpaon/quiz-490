@@ -102,20 +102,51 @@ app.use(function (req, res, next) {
   
   // Hacer visible "req.session" en las vistas
   res.locals.session = req.session;
+  
+  // Pasa el control al siguiente MW
   next();
+});
+
+// Helper autologout
+app.use(function (req, res, next) {
+  // Define el tiempo de autologout - 2min - 120000ms
+  // Para pruebas - 15s - 15000ms
+  var tiempoAutoLogout = 15000;
+  
+  // Actualiza la hora del sistema del último acceso
+  req.session.horaAccesoAnterior = req.session.horaAccesoActual || new Date().getTime();
+  console.log("Acceso anterior: " + req.session.horaAccesoAnterior);
+  
+  // Memoriza la hora del sistema del acceso actual
+  req.session.horaAccesoActual  = new Date().getTime();
+  console.log("Acceso actual..: " + req.session.horaAccesoActual);
+  
+  // Comprueba la vigencia del tiempo de sesión
+  req.session.tiempoSesionExcedido =
+    req.session.horaAccesoActual - 
+    req.session.horaAccesoAnterior > 
+    tiempoAutoLogout;
+  console.log("Excedido.......: " + req.session.tiempoSesionExcedido);
+  
+  // Borra el usuario de la sesión
+  if (req.session.tiempoSesionExcedido) {
+    delete req.session.user;
+  }
+  
+  // Pasa el control al siguiente MW
+  next();  
 });
 
 // Monta MWs enrutadores
 app.use('/', routes);
-//app.use('/users', users);
 
-// catch 404 and forward to error handler
+// Captura el error 404 y lanza el manejador de errores
 // Cualquier otra ruta no cazada por los enrutadores
 app.use(function (req, res, next) {
   // Instancia un nuevo error
   var err = new Error('Not Found');
 
-  // Parametriza el error
+  // Establece el codigo de error
   err.status = 404;
 
   // Delega el error

@@ -1,12 +1,11 @@
 // MW de autorización de accesos HTTP restringidos
 var loginRequired = function (req, res, next) {
-  if (req.session.user) {
+  if (req.session.user && !req.session.tiempoSesionExcedido) {
     next();
   } else {
     res.redirect("/login");
   }
 };
-
 
 // GET /login - Formulario de login
 var nuevo = function (req, res) {
