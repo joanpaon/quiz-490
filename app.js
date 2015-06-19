@@ -115,18 +115,18 @@ app.use(function (req, res, next) {
   
   // Actualiza la hora del sistema del último acceso
   req.session.horaAccesoAnterior = req.session.horaAccesoActual || new Date().getTime();
-  console.log("Acceso anterior: " + req.session.horaAccesoAnterior);
+//  console.log("Acceso anterior: " + req.session.horaAccesoAnterior);
   
   // Memoriza la hora del sistema del acceso actual
   req.session.horaAccesoActual  = new Date().getTime();
-  console.log("Acceso actual..: " + req.session.horaAccesoActual);
+//  console.log("Acceso actual..: " + req.session.horaAccesoActual);
   
   // Comprueba la vigencia del tiempo de sesión
   req.session.tiempoSesionExcedido =
     req.session.horaAccesoActual - 
     req.session.horaAccesoAnterior > 
     tiempoAutoLogout;
-  console.log("Excedido.......: " + req.session.tiempoSesionExcedido);
+//  console.log("Excedido.......: " + req.session.tiempoSesionExcedido);
   
   // Borra el usuario de la sesión
   if (req.session.tiempoSesionExcedido) {
